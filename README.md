@@ -1,3 +1,8 @@
+⚠️ Disclaimer
+Warning: This tool is created strictly for educational purposes, CTF competitions, and authorized penetration testing only. Do not use this tool against any system or network without explicit permission. The author is not responsible for any misuse or damage caused by this program.
+
+👨‍💻 Developed by: Fahad Al Fahim
+
 # apostrophe
 
 A working local CTF workbench: upload files or paste a question, run bounded analysis, inspect evidence and download a self-contained extraction script. Python 3.10+; no Python dependencies for the built-in engine. Linux is the deployment target; the built-in engine also runs on Windows.
