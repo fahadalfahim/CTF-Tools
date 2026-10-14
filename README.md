@@ -34,6 +34,5 @@ chmod +x main.py
 
 🚀 Usage
 Run the tool by providing the target IP or URL:
-
 Bash
 python3 main.py
