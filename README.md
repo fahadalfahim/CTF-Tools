@@ -24,10 +24,10 @@ Open your terminal and run the following commands:
 
 ```bash
 # Clone the repository
-git clone [https://github.com/Tomar-Username/](https://github.com/Tomar-Username/)[Tomar-Repository-er-Nam].git
+git clone [https://github.com/fahadalfahim/](https://github.com/fahadalfahim/)[CTF-Tools].git
 
 # Navigate to the project directory
-cd [Tomar-Repository-er-Nam]
+cd [CTF-Tools]
 
 # Make the script executable
 chmod +x main.py
