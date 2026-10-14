@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>apostrophe · CTF Workbench</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="apostrophe home"><span class="brand-icon">a<span>’</span></span><span>apostrophe<small>CTF WORKBENCH / 01</small></span></a>
+    <div class="sidebar-label">WORKSPACE</div><button id="new-job" class="nav active">＋ &nbsp; New investigation</button>
+    <div class="sidebar-label history-heading">RECENT INVESTIGATIONS <button id="refresh-history" aria-label="Refresh investigations">↻</button></div>
+    <div id="history" class="history"><p class="muted">No investigations yet.</p></div>
+    <div class="sidebar-bottom"><span class="status-dot"></span> Local workspace <small id="version">Connecting…</small></div>
+  </aside>
+  <main>
+    <header><div class="breadcrumb">Workspace <span>/</span> Investigation</div><span class="local-tag">LOCAL-FIRST · NO CLOUD UPLOAD</span></header>
+    <section class="intro"><div class="eyebrow">FOLLOW THE EVIDENCE</div><h1>Every flag has a trail.</h1><p>Bring the challenge. Inspect the clues. Reproduce the result.</p></section>
+    <div class="workspace-grid">
+      <section class="panel input-panel">
+        <div class="panel-heading"><h2><span class="step-number">01</span> Challenge input</h2><span class="tiny-tag">NEW</span></div>
+        <form id="challenge-form">
+          <label for="question">Question & hints <span>Optional with files</span></label>
+          <textarea id="question" rows="5" maxlength="50000" placeholder="Paste the challenge description, clues, or encoded text…"></textarea>
+          <label>Artifacts <span>Any format · 8 MiB/file · 16 MiB total</span></label>
+          <label class="dropzone" id="dropzone" for="file-input"><span class="upload-icon">↥</span><strong>Drop your challenge files</strong><span>or <u>browse files</u> · up to 8 files</span><input id="file-input" type="file" multiple></label>
+          <div id="files" class="file-list"></div>
+          <div class="field-row"><div><label for="prefix">Flag prefix</label><input id="prefix" placeholder="e.g. flag or picoCTF" maxlength="48" pattern="[A-Za-z0-9_\-]{1,48}"><small>Without braces. Blank uses a broad pattern.</small></div><div><label for="target">Remote target <span>Context only</span></label><input id="target" placeholder="host:port or challenge URL" maxlength="2048"><small>Remote solving is not enabled in this release.</small></div></div>
+          <label class="switch-row"><input id="deep" type="checkbox"><span><strong>Deep inspection</strong><small>Extra depth + XOR, Caesar and PNG/WAV low-bit checks</small></span><span class="mode-badge">EXTENDED</span></label>
+          <button id="analyze" class="primary" type="submit">Analyze & Solve <span>↗</span></button>
+          <p class="form-footnote">Original files stay intact. Uploaded programs are never executed.</p>
+          <p id="form-error" role="alert" class="error" hidden></p>
+        </form>
+      </section>
+      <section class="panel investigation-panel">
+        <div class="panel-heading"><h2><span class="step-number">02</span> Investigation</h2><span id="job-status" class="badge">READY</span></div>
+        <div id="empty-state" class="empty-state"><div class="orbit">⌕</div><h3>Ready to investigate</h3><p>Add a question or artifact to begin.<br>Findings and their evidence will appear here.</p><div class="capabilities"><span>ENCODINGS</span><span>ARCHIVES</span><span>BINARY TRIAGE</span><span>FLAG EXTRACTION</span></div></div>
+        <div id="job-view" hidden>
+          <div class="job-title-row"><h3 id="job-title"></h3><button id="cancel" class="secondary" hidden>Stop</button></div>
+          <div class="metrics"><div><strong id="metric-artifacts">0</strong><span>Artifacts</span></div><div><strong id="metric-experiments">—</strong><span>Experiments</span></div><div><strong id="metric-candidates">0</strong><span>Candidates</span></div><div><strong id="metric-time">—</strong><span>Run time</span></div></div>
+          <div id="running-indicator" class="running" hidden><span class="status-dot"></span> Following transformations and collecting evidence…</div>
+          <div id="job-error" class="error" hidden></div>
+          <div id="candidate-list"></div>
+          <div id="no-candidates" class="notice" hidden></div>
+          <div id="diagnostics"></div>
+          <div id="result-notice" class="notice" hidden></div>
+          <div class="section-title">ACTIVITY LOG</div><div id="events" class="terminal" role="log" aria-live="off"></div>
+          <div id="result-sections" hidden>
+            <details open><summary>Evidence trail <span id="artifact-count"></span></summary><div id="artifacts" class="artifact-list"></div></details>
+            <details><summary>Limits & next steps</summary><ul id="notes"></ul></details>
+            <details id="native-section" hidden><summary>Passive tool output</summary><div id="native-output"></div></details>
+            <button id="export" class="secondary export-button">↓ Download reproduction bundle</button>
+            <button id="rerun" class="secondary export-button">↻ Rerun saved inputs with current prefix & deep setting</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="bottom-strip"><div><span class="status-dot"></span><strong>Evidence before confidence</strong><p>Reproduced extraction is not platform acceptance. Decoys can also reproduce.</p></div><div id="tool-state">Built-in analyzers enabled</div></section>
+    <footer>apostrophe v0.1.1 <span>Deterministic analysis · Local artifacts · Reproducible findings</span></footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

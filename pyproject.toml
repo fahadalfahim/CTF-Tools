@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apostrophe-workbench"
+version = "0.1.1"
+description = "Local CTF analysis workbench with bounded transformations and reproducible evidence"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+apostrophe = "flagforge.server:main"
+flagforge = "flagforge.server:main"
+
+[tool.setuptools.package-data]
+flagforge = ["static/*"]
+
+[tool.setuptools.packages.find]
+include = ["apostrophe*", "flagforge*"]

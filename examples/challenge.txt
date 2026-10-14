@@ -1,0 +1,4 @@
+Challenge: An intern encoded the trophy. Recover the flag from the payload.
+Flag prefix: flag
+Payload:
+ZmxhZ3tldmlkZW5jZV9iZWZvcmVfY29uZmlkZW5jZX0=

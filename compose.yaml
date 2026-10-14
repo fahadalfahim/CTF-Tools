@@ -1,0 +1,22 @@
+services:
+  flagforge:
+    build: .
+    ports:
+      - "127.0.0.1:8787:8787"
+    volumes:
+      - flagforge-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 96
+    mem_limit: 1536m
+    cpus: 2
+    networks: [isolated]
+networks:
+  isolated:
+    internal: true
+volumes:
+  flagforge-data:
